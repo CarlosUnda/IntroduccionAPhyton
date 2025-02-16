@@ -1,0 +1,84 @@
+class Coche:
+    def __init__(self, marca: str, modelo: str, color: str):
+        self.marca = marca
+        self.modelo = modelo
+        self.color = color
+        self.velocidad = 0
+
+    def acelerar(self, velocidad: int):
+        self.velocidad += velocidad
+        print(f"El coche ha acelerado. Velocidad actual: {self.velocidad} km/h")
+
+    def frenar(self, velocidad: int):
+        if self.velocidad - velocidad >= 0:
+            self.velocidad -= velocidad
+        else:
+            self.velocidad = 0
+        print(f"El coche ha frenado. Velocidad actual: {self.velocidad} km/h")
+
+    def mostrar_info(self):
+        print(f"Marca: {self.marca}, Modelo: {self.modelo}, Color: {self.color}, Velocidad: {self.velocidad} km/h")
+
+
+class CuentaBancaria:
+    def __init__(self, titular: str):
+        self.titular = titular
+        self.saldo = 0.0
+
+    def depositar(self, cantidad: float):
+        if cantidad > 0:
+            self.saldo += cantidad
+            print(f"Se han depositado {cantidad}€. Saldo actual: {self.saldo}€")
+        else:
+            print("La cantidad a depositar debe ser positiva.")
+
+    def retirar(self, cantidad: float):
+        if cantidad > 0:
+            if self.saldo >= cantidad:
+                self.saldo -= cantidad
+                print(f"Se han retirado {cantidad}€. Saldo actual: {self.saldo}€")
+            else:
+                print("Saldo insuficiente para realizar la retirada.")
+        else:
+            print("La cantidad a retirar debe ser positiva.")
+
+    def mostrar_saldo(self):
+        print(f"Saldo actual de {self.titular}: {self.saldo}€")
+
+
+class Rectangulo:
+    def __init__(self, ancho: float, alto: float):
+        self.ancho = ancho
+        self.alto = alto
+
+    def calcular_area(self) -> float:
+        return self.ancho * self.alto
+
+    def calcular_perimetro(self) -> float:
+        return 2 * (self.ancho + self.alto)
+
+    def mostrar_info(self):
+        area = self.calcular_area()
+        perimetro = self.calcular_perimetro()
+        print(f"Ancho: {self.ancho}, Alto: {self.alto}, Área: {area}, Perímetro: {perimetro}")
+
+
+# Ejemplo de uso de las clases
+if __name__ == "__main__":
+    # Crear un coche
+    mi_coche = Coche("Toyota", "Corolla", "Rojo")
+    mi_coche.mostrar_info()
+    mi_coche.acelerar(50)
+    mi_coche.frenar(20)
+    mi_coche.mostrar_info()
+
+    # Crear una cuenta bancaria
+    mi_cuenta = CuentaBancaria("Juan Pérez")
+    mi_cuenta.mostrar_saldo()
+    mi_cuenta.depositar(1000)
+    mi_cuenta.retirar(300)
+    mi_cuenta.mostrar_saldo()
+
+    # Crear un rectángulo
+    mi_rectangulo = Rectangulo(5.0, 10.0)
+    mi_rectangulo.mostrar_info()
